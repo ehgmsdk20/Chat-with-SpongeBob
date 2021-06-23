@@ -1,13 +1,28 @@
-function getMessageText() {
-    let $message_input;
-    $message_input = $('.message_input');
-    return $message_input.val();
+function changePartner(e) {
+    var partner = document.getElementById('character')
+    var name = partner[partner.selectedIndex].value;
+    document.getElementById('char').innerText = "Chat with "+name;
+    var ul = document.getElementById("messages");
+    while (ul.hasChildNodes()) { 
+        ul.removeChild( ul.firstChild ); 
+    }
+
 }
 
 function onClickAsEnter(e) {
     if (e.keyCode === 13) {
         onSendButtonClicked()
     }
+}
+
+function sendMessage(text, message_side) {
+    var ul = document.getElementById("messages");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(text));
+    li.classList.add("message_"+message_side);
+    ul.appendChild(li);
+    ul.scrollTop = ul.scrollHeight;
+
 }
 
 function onSendButtonClicked() {
@@ -21,6 +36,8 @@ function onSendButtonClicked() {
         document.getElementById('warning').innerText = 'Please fill topic!';
         return ;
     }
+    sendMessage(message, 'right');
+    document.getElementById("message_input").value='';
     get_script(message, name, topic);
     return ;
 }
@@ -39,6 +56,8 @@ function get_script(message, name, topic){
     return ;
 }
 
+var maxnum=3; //The max num that repeats function "fetchUntilCondition"
+
 function fetchUntilCondition(url, formData, name, i, cb){
     fetch(
         url,
@@ -56,13 +75,13 @@ function fetchUntilCondition(url, formData, name, i, cb){
         .then(response => response.json())
         .then(json => json['0'])
         .then(result => {
-            if(result.length<2 && i<10) {
+            if(result.length<2 && i<maxnum) {
                 fetchUntilCondition(url, formData, name, i+1, cb);
             }
-            else if(result[1][0]!=name && i<10) {
+            else if(result[1][0]!=name && i<maxnum) {
                 fetchUntilCondition(url, formData, name, i+1, cb); // fetch again
             }
-            else if(i==10) {
+            else if(i==maxnum) {
                 if(result[1][0]==name){
                     cb(result[1][1]);
                 }
@@ -112,5 +131,5 @@ function callback(response, name, message, cb) {
 }
 
 function callback2(message, name) {
-    console.log(message);
+    sendMessage(message, 'left');
 }

@@ -28,7 +28,7 @@
                                 <!-- Character list -->
                 <p>You are SpongeBob!</p>
                 <label>Who is your friend?&nbsp;&nbsp;</label>
-                <select id="character" style="margin-bottom: 10px;">
+                <select id="character" style="margin-bottom: 10px;" onchange="changePartner();">
                     <option value="Patrick">Patrick</option>
                     <option value="Squidward">Squidward</option>
                     <option value="Sandy">Sandy</option>
@@ -45,10 +45,10 @@
                 <!-- chatting -->
                 <div class="chat_window">
                     <div class="top_menu">
-                        <div class="title" id = "char">Chat with friends of SpongeBob</div>
+                        <div class="title" id = "char">Chat with Patrick</div>
                     </div>
 
-                    <ul class="messages"></ul>
+                    <ul class="messages" id = "messages"></ul>
                     <div class="bottom_wrapper">
                         <div class="message_input_wrapper" id="message_input_wrapper">
                             <input class="message_input" id="message_input"
