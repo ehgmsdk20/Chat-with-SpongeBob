@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Chat with SpongeBob</title>
+
+        <!-- CSS -->
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" id="main-css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        <!-- font style -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+        <!-- script -->
+
+    <script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <div class="container">
+                <h1>Chat with friends of SpongeBob</h1>
+                <p>You can chat with friends of SpongeBob!</p>
+                                
+                                <!-- Character list -->
+                <p>You are SpongeBob!</p>
+                <label>Who is your friend?&nbsp;&nbsp;</label>
+                <select id="character" style="margin-bottom: 10px;">
+                    <option value="Patrick">Patrick</option>
+                    <option value="Squidward">Squidward</option>
+                    <option value="Sandy">Sandy</option>
+                    <option value="Mr.Krabs">Mr.Krabs</option>
+                    <option value="Plankton">Plankton</option>
+                </select>
+                <br>
+                <!-- Topic -->
+                <label>What we talking about?&nbsp;&nbsp;</label>
+                <input id="topic" class="id_input"><br>
+                <b><label id="warning" style="color:red;"></label></b>
+
+
+                <!-- chatting -->
+                <div class="chat_window">
+                    <div class="top_menu">
+                        <div class="title" id = "char">Chat with friends of SpongeBob</div>
+                    </div>
+
+                    <ul class="messages"></ul>
+                    <div class="bottom_wrapper">
+                        <div class="message_input_wrapper" id="message_input_wrapper">
+                            <input class="message_input" id="message_input"
+                                onkeyup="return onClickAsEnter(event)"
+                                placeholder="Talk to SpongeBob!"/>
+                        </div>
+
+                        <div class="send_message"
+                            id="send_message"
+                            onclick="onSendButtonClicked()">
+
+                            <div class="icon"></div>
+                            <div class="text">Send</div>
+                        </div>
+
+                    </div>
+                </div> 
+                <br>       
+        </div>
+    </body>
+</html>
