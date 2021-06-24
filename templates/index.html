@@ -15,9 +15,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
-        <!-- script -->
-
-    <script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
 
     </head>
     <body>
@@ -27,7 +24,7 @@
                                 
                                 <!-- Character list -->
                 <p>You are SpongeBob!</p>
-                <label>Who is your friend?&nbsp;&nbsp;</label>
+                <label>Who is your friend? (Patrick can give the most reasonable result!)&nbsp;&nbsp;</label>
                 <select id="character" style="margin-bottom: 10px;" onchange="changePartner();">
                     <option value="Patrick">Patrick</option>
                     <option value="Squidward">Squidward</option>
@@ -48,7 +45,8 @@
                         <div class="title" id = "char">Chat with Patrick</div>
                     </div>
 
-                    <ul class="messages" id = "messages"></ul>
+                    <ul class="messages" id = "messages">
+                    </ul>
                     <div class="bottom_wrapper">
                         <div class="message_input_wrapper" id="message_input_wrapper">
                             <input class="message_input" id="message_input"
@@ -68,5 +66,16 @@
                 </div> 
                 <br>       
         </div>
+    <!-- script -->
+    <script type="text/javascript">
+    var characters = document.getElementById("character");
+    var dictObject = {};
+    dictObject["Patrick"] = "{{url_for('static', filename='image/Patrick.png')}}";
+    dictObject["Squidward"] = "{{url_for('static', filename='image/Squidward.png')}}";
+    dictObject["Sandy"] = "{{url_for('static', filename='image/Sandy.png')}}";
+    dictObject["Mr.Krabs"] = "{{url_for('static', filename='image/Mr.Krabs.png')}}";
+    dictObject["Plankton"] = "{{url_for('static', filename='image/Plankton.png')}}";
+    </script>
+    <script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
     </body>
 </html>

@@ -15,15 +15,28 @@ function onClickAsEnter(e) {
     }
 }
 
-function sendMessage(text, message_side) {
+function sendMessage(text, message_side, name) {
     var ul = document.getElementById("messages");
     var li = document.createElement("li");
-    var img = document.createElement("img");
-    var img = 
-    li.appendChild(document.createTextNode(text));
+    var message_wrapper = document.createElement("div");
+    message_wrapper.classList.add("message_wrapper_"+message_side);
 
-    li.appendChild(document.createTextNode(text));
-    li.classList.add("message_"+message_side);
+    //make profile
+    if(message_side=="left"){
+        var box = document.createElement("div");
+        var img = document.createElement("img");
+        box.classList.add("box");
+        img.setAttribute("src", dictObject[name]);
+        img.classList.add("profile");
+        box.appendChild(img);
+        message_wrapper.appendChild(box);
+    }
+
+    var textbox = document.createElement("div");
+    textbox.appendChild(document.createTextNode(text));
+    textbox.classList.add("message");
+    message_wrapper.appendChild(textbox);
+    li.appendChild(message_wrapper);
     ul.appendChild(li);
     ul.scrollTop = ul.scrollHeight;
 
@@ -43,7 +56,7 @@ function onSendButtonClicked() {
     else {
         document.getElementById('input_warning').innerText = '';
     }
-    sendMessage(message, 'right');
+    sendMessage(message, 'right', name);
     document.getElementById("message_input").value='';
     get_script(message, name, topic);
     return ;
@@ -146,5 +159,5 @@ function callback(response, name, message, cb) {
 }
 
 function callback2(message, name) {
-    sendMessage(message, 'left');
+    sendMessage(message, 'left', name);
 }
