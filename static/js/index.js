@@ -18,6 +18,10 @@ function onClickAsEnter(e) {
 function sendMessage(text, message_side) {
     var ul = document.getElementById("messages");
     var li = document.createElement("li");
+    var img = document.createElement("img");
+    var img = 
+    li.appendChild(document.createTextNode(text));
+
     li.appendChild(document.createTextNode(text));
     li.classList.add("message_"+message_side);
     ul.appendChild(li);
