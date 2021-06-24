@@ -11,3 +11,18 @@ This service uses the following two open source APIs:
 ## Web demo
 ![ex_screenshot](./examples/main.PNG)
 http://13.125.104.17:80/
+
+## How to run
+-----
+
+### Docker build
+```
+cd /directory/where/dockerfile/is
+docker build -t $(YOUR_DOCKER_HUB_ID)/ChatwithSponge .
+```
+
+### Docker run
+```
+docker run -p 80:80 -d $(YOUR_DORCKER_HUB_ID)/ChatwithSponge
+```
+Now the server is available at http://localhost.
