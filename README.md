@@ -10,7 +10,7 @@ This service uses the following two open source APIs:
 * [Docker](https://docs.docker.com/get-started/)
 ## Web demo
 ![ex_screenshot](./examples/main.PNG)
-http://13.125.104.17:80/
+https://main-chat-with-sponge-bob-ehgmsdk20.endpoint.ainize.ai/
 
 ## How to run
 -----
